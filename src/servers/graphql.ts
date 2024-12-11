@@ -1,46 +1,10 @@
 import { ApolloServer } from "@apollo/server";
 import { Application } from "express";
 import { expressMiddleware } from "@apollo/server/express4";
-import prisma from "../prisma";
-
-const typeDefs = `#graphql
-  type Book {
-    title: String
-    author: String
-  }
-  type Query {
-    books: [Book]
-  }
-`;
-const books = [
-  {
-    title: "The Awakening",
-    author: "Kate Chopin",
-  },
-  {
-    title: "City of Glass",
-    author: "Paul Auster",
-  },
-];
-
-const resolvers = {
-  Query: {
-    books: async () => {
-      const f = await prisma.test.create({
-        data: {
-          name: "JERONI",
-        },
-      });
-      return books;
-    },
-  },
-};
+import { schema } from "../schema";
 
 export default async function (app: Application) {
-  const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-  });
+  const server = new ApolloServer({ schema });
 
   await server.start();
 

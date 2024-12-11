@@ -5,7 +5,8 @@
   "scripts": {
     "start": "tsc && node dist/app.js",
     "dev": "nodemon - exec 'ts-node' src/app.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "codegen": "touch src/generated/resolvers-types.ts && graphql-codegen -r tsconfig-paths/register --config src/codegen.ts"
   },
   "keywords": [],
   "author": "",
@@ -27,7 +28,11 @@
     "typescript": "^5.7.2"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.3",
+    "@graphql-codegen/typescript": "^4.1.2",
+    "@graphql-codegen/typescript-resolvers": "^4.4.1",
     "@types/express": "^5.0.0",
-    "prisma": "^6.0.1"
+    "prisma": "^6.0.1",
+    "tsconfig-paths": "^4.2.0"
   }
 }
