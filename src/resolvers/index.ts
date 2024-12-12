@@ -1,29 +1,5 @@
-import prisma from "../prisma";
+import loginResolvers from "./user";
 
-const books = [
-  {
-    title: "The Awakening",
-    author: "Kate Chopin",
-  },
-  {
-    title: "City of Glass",
-    author: "Paul Auster",
-  },
-];
-
-const resolver = {
-  Query: {
-    books: async () => {
-      const f = await prisma.test.create({
-        data: {
-          name: "JERONI",
-        },
-      });
-      return books;
-    },
-  },
-};
-
-const resolvers = [resolver];
+const resolvers = [loginResolvers];
 
 export default resolvers;
