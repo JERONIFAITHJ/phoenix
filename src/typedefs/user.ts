@@ -13,7 +13,7 @@ const typeDefs = `#graphql
  }
 
  type CreateUserResponse {
-    status: Int
+    status: String
     message: String
  }
 `;
