@@ -2,6 +2,7 @@ import bodyParser from "body-parser";
 import express from "express";
 import cors from "cors";
 import graphql from "./servers/graphql";
+require("dotenv").config();
 
 async function main() {
   const app = express();

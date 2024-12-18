@@ -1,3 +1,6 @@
+import { Prisma } from "@prisma/client";
+import prisma from "../prisma";
+
 const resolver = {
   Query: {
     user: async () => {
@@ -6,7 +9,9 @@ const resolver = {
   },
   Mutation: {
     createUser: async (args) => {
-      console.log(args);
+      await prisma.$queryRaw(
+        Prisma.sql`INSERT INTO "Test" (name) VALUES ('FOO')`
+      );
       return {};
     },
   },
